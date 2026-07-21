@@ -1,0 +1,1 @@
+Assets for the MODU/TABLE website will be stored in this folder.

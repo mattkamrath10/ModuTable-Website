@@ -1,54 +1,63 @@
-// ==============================
 // MODU/TABLE Website
-// Phase 1 JavaScript
-// ==============================
 
-// Smooth scrolling for navigation
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
 
-        const target = document.querySelector(this.getAttribute('href'));
+    // Smooth scrolling
+    document.querySelectorAll('nav a').forEach(link => {
 
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+        link.addEventListener('click', function(e){
 
-// Header shadow on scroll
-const header = document.querySelector('header');
+            e.preventDefault();
 
-window.addEventListener('scroll', () => {
+            const target = document.querySelector(this.getAttribute('href'));
 
-    if (window.scrollY > 50) {
-        header.style.boxShadow = "0 8px 24px rgba(0,0,0,.15)";
-    } else {
-        header.style.boxShadow = "0 2px 10px rgba(0,0,0,.08)";
-    }
+            if(target){
 
-});
+                target.scrollIntoView({
+                    behavior:"smooth"
+                });
 
-// Fade-in animation
-const observer = new IntersectionObserver((entries) => {
+            }
 
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
+        });
 
     });
 
-}, {
-    threshold: 0.15
-});
+    // Header background change
+    const header = document.querySelector("header");
 
-document.querySelectorAll("section, .card, .collection").forEach(el => {
-    el.classList.add("hidden");
-    observer.observe(el);
-});
+    window.addEventListener("scroll",()=>{
 
-console.log("MODU/TABLE Website Loaded");
+        if(window.scrollY>80){
+
+            header.style.background="#000";
+
+        }else{
+
+            header.style.background="#111";
+
+        }
+
+    });
+
+    // Collection hover effect
+    document.querySelectorAll(".collection-card").forEach(card=>{
+
+        card.addEventListener("mouseenter",()=>{
+
+            card.style.transform="translateY(-10px)";
+            card.style.transition=".3s";
+
+        });
+
+        card.addEventListener("mouseleave",()=>{
+
+            card.style.transform="translateY(0px)";
+
+        });
+
+    });
+
+    console.log("MODU/TABLE Website Loaded");
+
+});

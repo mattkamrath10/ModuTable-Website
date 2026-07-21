@@ -1,0 +1,1 @@
+This folder contains all ModuTable collection images and renderings.
